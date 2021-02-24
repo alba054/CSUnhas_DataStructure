@@ -1,11 +1,13 @@
-package Queue;
+package DataStructure.Queue;
 
 import java.util.EmptyStackException;
-import Stack.Stack;
-// queue implemented using stack 
-// code by YoYo101
+import DataStructure.Stack.Stack;
+/*
+    queue implemented using stack 
+    code by YoYo101
+ */
 
-public class Queue<T> extends Stack
+public class Queue<T> extends Stack<T>
 {
     private int head = 0;
 
