@@ -4,9 +4,9 @@ import java.util.Iterator;
 
 public class SinglyLinkedList<T> implements Iterable<T>
 {
-    private Node head;
-    private Node tail;
-    private int size;
+    protected Node head;
+    protected Node tail;
+    protected int size;
 
     public SinglyLinkedList()
     {
@@ -15,7 +15,7 @@ public class SinglyLinkedList<T> implements Iterable<T>
         this.size = 0;
     }
 
-    private class Node 
+    protected class Node 
     {
         public T node;
         public Node next;
@@ -26,7 +26,7 @@ public class SinglyLinkedList<T> implements Iterable<T>
         return this.size;
     }
 
-    private void insertEmpty(T node)
+    protected void insertEmpty(T node)
     {
         this.head.node = node;
         this.size++;
@@ -111,17 +111,17 @@ public class SinglyLinkedList<T> implements Iterable<T>
 
     public boolean removeHead()
     {
-        if(this.head == this.tail)
-        {
-            this.head = this.tail = null;
-            this.size--;
-            return true;
-        }
+        // if(this.head == this.tail)
+        // {
+        //     this.head = this.tail = null;
+        //     this.size--;
+        //     return true;
+        // }
         if(this.size != 0)
         {
             Node nextHead = this.head.next;
-            this.head = null;
             this.head = nextHead;
+            // this.head = null;
             this.size--;
 
             return true;
@@ -133,11 +133,20 @@ public class SinglyLinkedList<T> implements Iterable<T>
     public boolean removeTail()
     {
         Node curNode = this.head;
-        if(curNode == this.tail)
+        // if(curNode == this.tail)
+        // {
+        //     removeHead();
+        //     return true;
+        // }
+        if(curNode == null) return false;
+        if(this.head == this.tail) 
         {
             removeHead();
             return true;
+            // this.size--;
+            // return true;
         }
+
         while(curNode.next != null)
         {
             if(curNode.next == this.tail)
@@ -145,12 +154,13 @@ public class SinglyLinkedList<T> implements Iterable<T>
                 this.tail = curNode;
                 this.tail.next = null;
                 this.size--;
-                return true;
+                // return true;
             }
             curNode = curNode.next;
         }
+        // curNode = this.tail = null;
 
-        return false;
+        return true;
     }
     
     public boolean removeNode(T node)
@@ -222,7 +232,7 @@ public class SinglyLinkedList<T> implements Iterable<T>
         list.insertAfter(1, 2);
         list.insertAfter(2, 3);
         list.insertTail(3);
-        list.insertAfter(2, 4);
+        list.insertAfter(2, 5);
         list.insertTail(4);
         
 
@@ -231,6 +241,8 @@ public class SinglyLinkedList<T> implements Iterable<T>
         {
             System.out.print(i + "-->");
         }
+        // list.removeNode(4);
+        // list.removeHead();
         list.removeNode(4);
         // list.removeNode(3);
         // list.removeNode(3);
@@ -238,7 +250,7 @@ public class SinglyLinkedList<T> implements Iterable<T>
         // System.out.println(list.contains(4));
         System.out.println("\nafter...");
 
-        System.out.println(list.getHeadValue());
+        // System.out.println(list.getHeadValue());
         for(Integer i : list)
         {
             System.out.print(i + "-->");
