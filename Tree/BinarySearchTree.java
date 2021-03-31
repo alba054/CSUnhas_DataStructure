@@ -34,6 +34,22 @@ public class BinarySearchTree {
 
     public boolean search(int data) {
         return search(data, root);
+
+        // tanpa rekursif
+        // Node temp = root;
+        // while(temp != null) {
+        //     if(temp.data < data) {
+        //         temp = temp.right;
+        //     }
+        //     else if(temp.data > data) {
+        //         temp = temp.left;
+        //     }
+        //     else {
+        //         return true;
+        //     }
+        // }
+
+        // return false;
     }
 
     public boolean search(int data, Node curNode) {
@@ -64,6 +80,30 @@ public class BinarySearchTree {
         
         root = insert(data, root);
         return true;
+
+        // Node temp = root;
+        // Node trailTemp = null;
+        // while(temp != null) {
+        //     trailTemp = temp;
+        //     if(temp.data < data) {
+        //         temp = temp.right;
+        //     }
+        //     else if(temp.data > data) {
+        //         temp = temp.left;
+        //     }
+        // }
+        
+        // if(trailTemp == null) {
+        //     root = new Node(data, null, null);
+        // }
+        // else if(trailTemp.data < data) {
+        //     trailTemp.right = new Node(data, null, null);
+        // }
+        // else if(trailTemp.data > data) {
+        //     trailTemp.left = new Node(data, null, null);
+        // }
+
+        // return true;
     }
 
     public Node insert(int data, Node curNode) {
@@ -108,6 +148,71 @@ public class BinarySearchTree {
         
         root = delete(data, root);
         return true;
+
+        // Node temp = root;
+        // Node trailTemp = null;
+
+        // while(temp.data != data) {
+        //     trailTemp = temp;
+        //     if(temp.data < data) {
+        //         temp = temp.right;
+        //     }
+        //     else if(temp.data > data) {
+        //         temp = temp.left;
+        //     }
+            
+        // }
+
+        // if(temp.left == null && temp.right == null) {
+        //     if(trailTemp.left == temp) {
+        //         trailTemp.left = null;
+        //     }
+        //     else if(trailTemp.right == temp) {
+        //         trailTemp.right = null;
+        //     }
+        // }
+
+        // else if(temp.left == null) {
+        //     Node rightTemp = temp.right;
+        //     if(trailTemp.left == temp) {
+        //         trailTemp.left = rightTemp;
+        //     }
+        //     else if(trailTemp.right == temp) {
+        //         trailTemp.right = rightTemp;
+        //     }
+        //     temp = null;
+        // }
+        // else if(temp.right == null) {
+        //     Node leftTemp = temp.left;
+        //     if(trailTemp.left == temp) {
+        //         trailTemp.left = leftTemp;
+        //     }
+        //     else if(trailTemp.right == temp) {
+        //         trailTemp.right = leftTemp;
+        //     }
+        //     temp = null;
+        // }
+        // else {
+        //     Node minTemp = minRightSubTree(temp.right);
+        //     temp.data = minTemp.data;
+        //     Node trailMinTemp = null;
+        //     Node minTemp2 = temp.right;
+        //     while(minTemp2.left != null) {
+        //         trailMinTemp = minTemp2;
+        //         minTemp2 = minTemp2.left;
+        //     }
+            
+        //     if(minTemp2.left == null && minTemp2.right == null) {
+        //         trailMinTemp.left = null;
+        //     }
+        //     else if(minTemp2.left == null) {
+        //         Node rightTemp = minTemp2.right;
+        //         trailMinTemp.left = rightTemp;
+        //         minTemp2 = minTemp = null;
+        //     }
+        // }
+        
+        // return true;
     }
 
     public Node delete(int data, Node curNode) {
@@ -161,21 +266,26 @@ public class BinarySearchTree {
         bts.insert(20);
         bts.insert(21);
         bts.insert(30);
-        bts.insert(11);
+        bts.insert(13);
         bts.insert(21);
         bts.insert(9);
-        bts.insert(12);
-        bts.insert(12);
+        bts.insert(14);
+        bts.insert(14);
         bts.insert(30);
         bts.preorder(bts.root);
         System.out.println();
         bts.inorder(bts.root);
         System.out.println();
         bts.postorder(bts.root);
-        System.out.println(bts.search(9));
-        
-        bts.delete(10);
+        System.out.println(bts.search(941));
+        System.out.println();
+        bts.delete(20);
+        // bts.delete(21);
         bts.inorder(bts.root);
+        System.out.println();
+        bts.postorder(bts.root);
+        System.out.println();
+        bts.preorder(bts.root);
     }
     
 }
